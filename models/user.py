@@ -13,7 +13,7 @@ class BaseUserModel(db.Model):
     phone = db.Column(db.String(100), nullable=False)
 
 
-class Blogger(BaseUserModel):
+class BloggerModel(BaseUserModel):
     __tablename__ = "bloggers"
 
     posts = db.relationship("PostModel", backref="post", lazy="dynamic")
