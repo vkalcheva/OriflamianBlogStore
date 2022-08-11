@@ -1,7 +1,5 @@
 from marshmallow import Schema, fields
 
-from schemas.requests.category import CategoryRequestSchema
-
 
 class ProductRequestSchema(Schema):
     name = fields.String(required=True)
