@@ -1,7 +1,7 @@
 from flask import request
 from flask_restful import Resource
 from managers.blogger import BloggerManager
-from schemas.requests.auth import RegisterBloggerRequestSchema, LoginBloggerRequestSchema
+from schemas.requests.blogger import RegisterBloggerRequestSchema, LoginBloggerRequestSchema
 from utils.decorators import validate_schema
 
 

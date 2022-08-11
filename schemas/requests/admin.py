@@ -1,9 +1,10 @@
 import phonenumbers
 from marshmallow import fields, validates, ValidationError, validate
 from phonenumbers.phonenumberutil import NumberParseException
+from schemas.requests.base import AuthBase
 
 
-class RegisterBloggerRequestSchema(AuthBase):
+class RegisterAdminRequestSchema(AuthBase):
     first_name = fields.String(required=True, validate=validate.Length(min=3))
     last_name = fields.String(required=True, validate=validate.Length(min=3))
     phone = fields.String(required=True)
@@ -17,6 +18,6 @@ class RegisterBloggerRequestSchema(AuthBase):
             raise ValidationError('Not valid number!')
 
 
-class LoginBloggerRequestSchema(AuthBase):
+class LoginAdminRequestSchema(AuthBase):
     pass
 

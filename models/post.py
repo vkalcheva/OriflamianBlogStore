@@ -12,5 +12,5 @@ class PostModel(db.Model):
     description = db.Column(db.Text, nullable=False)
     date_created = db.Column(db.DateTime, server_default=func.now())
 
-    blogger_id = db.Column(db.Integer, db.ForeignKey("bloggers.id"))
+    blogger_id = db.Column(db.Integer, db.ForeignKey("bloggers.id"), nullable=False)
     blogger = db.relationship("BloggerModel")
