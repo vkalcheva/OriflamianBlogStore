@@ -1,10 +1,9 @@
-from marshmallow import Schema, fields
+from marshmallow import fields
 
-from schemas.responses.category import CategoryResponseSchema
+from schemas.bases import ProductBaseSchema
 
 
-class ProductResponseSchema(Schema):
+class ProductResponseSchema(ProductBaseSchema):
     id = fields.Integer(required=True)
-    name = fields.String(required=True)
-    price = fields.Float(required=True)
-    category = fields.Nested(CategoryResponseSchema)
+    image_url = fields.String(required=True)
+

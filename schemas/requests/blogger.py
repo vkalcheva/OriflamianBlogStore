@@ -1,7 +1,7 @@
 import phonenumbers
 from marshmallow import fields, validates, ValidationError, validate
 from phonenumbers.phonenumberutil import NumberParseException
-from schemas.requests.base import AuthBase
+from schemas.requests.auth_base import AuthBase
 
 
 class RegisterBloggerRequestSchema(AuthBase):

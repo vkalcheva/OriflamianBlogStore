@@ -1,7 +1,5 @@
-from marshmallow import Schema, fields
+from schemas.bases import ReviewBaseSchema
 
 
-class ReviewRequestSchema(Schema):
-    title = fields.String(required=True)
-    comment = fields.String(required=True)
-    post_id = fields.Integer(required=True)
+class ReviewRequestSchema(ReviewBaseSchema):
+    pass

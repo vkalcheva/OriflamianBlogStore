@@ -1,7 +1,8 @@
-from marshmallow import Schema, fields
+from marshmallow import fields
+
+from schemas.bases import PostBaseSchema
 
 
-class PostRequestSchema(Schema):
-    title = fields.String(required=True)
-    description = fields.String(required=True)
-    photo_url = fields.String(required=True)
+class PostRequestSchema(PostBaseSchema):
+    photo = fields.String(required=True)
+    photo_extension = fields.String(required=True)

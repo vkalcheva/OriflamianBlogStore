@@ -1,10 +1,10 @@
-from marshmallow import Schema, fields
+from marshmallow import fields
+
+from schemas.bases import PostBaseSchema
 
 
-class PostResponseSchema(Schema):
+class PostResponseSchema(PostBaseSchema):
     id = fields.Integer(required=True)
-    title = fields.String(required=True)
-    description = fields.String(required=True)
     photo_url = fields.String(required=True)
     date_created = fields.DateTime(required=True)
     blogger_id = fields.Integer(required=True)

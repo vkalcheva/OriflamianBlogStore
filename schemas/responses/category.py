@@ -1,9 +1,8 @@
-from marshmallow import Schema, fields
-from marshmallow_enum import EnumField
+from marshmallow import fields
 
-from models import CategoryType
+from schemas.bases import CategoryBaseSchema
 
 
-class CategoryResponseSchema(Schema):
+class CategoryResponseSchema(CategoryBaseSchema):
     id = fields.Integer(required=True)
-    type = EnumField(CategoryType)
+

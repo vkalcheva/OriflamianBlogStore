@@ -1,8 +1,5 @@
-from marshmallow import Schema
-from marshmallow_enum import EnumField
-
-from models import CategoryType
+from schemas.bases import CategoryBaseSchema
 
 
-class CategoryRequestSchema(Schema):
-    type = EnumField(CategoryType)
+class CategoryRequestSchema(CategoryBaseSchema):
+    pass
