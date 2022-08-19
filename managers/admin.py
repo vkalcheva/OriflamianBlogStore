@@ -15,7 +15,7 @@ class AdminManager:
         admin = AdminModel(**admin_data)
         try:
             db.session.add(admin)
-            db.session.commit()
+            db.session.flush()
             return AuthManager.encode_token(admin)
         except Exception as ex:
             raise BadRequest(str(ex))

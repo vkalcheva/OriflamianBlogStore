@@ -8,5 +8,5 @@ class CategoryManager:
         data["admin_id"] = user.id
         category = CategoryModel(**data)
         db.session.add(category)
-        db.session.commit()
+        db.session.flush()
         return category

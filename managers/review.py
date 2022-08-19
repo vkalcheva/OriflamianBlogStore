@@ -8,6 +8,6 @@ class ReviewManager:
         data["blogger_id"] = user.id
         review = ReviewModel(**data)
         db.session.add(review)
-        db.session.commit()
+        db.session.flush()
         return review
 

@@ -15,7 +15,7 @@ class BloggerManager:
         blogger = BloggerModel(**blogger_data)
         try:
             db.session.add(blogger)
-            db.session.commit()
+            db.session.flush()
             return AuthManager.encode_token(blogger)
         except Exception as ex:
             raise BadRequest(str(ex))

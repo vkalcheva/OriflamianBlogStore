@@ -5,7 +5,7 @@ from werkzeug.exceptions import NotFound
 
 from constants import TEMP_DIR
 from db import db
-from models import ProductModel
+from models import ProductModel, CategoryType, CategoryModel
 from services.s3 import S3Service
 from utils.helpers import decode_file
 
@@ -13,7 +13,8 @@ from utils.helpers import decode_file
 class ProductManager:
     @staticmethod
     def get_all():
-        return ProductModel.query.all()
+        # return ProductModel.query.filter_by(category_id=3).all()
+        return ProductModel.query.order_by(ProductModel.category_id).all()
 
     # @staticmethod
     # def get_all():
@@ -38,7 +39,7 @@ class ProductManager:
             data["image_url"] = image_url
             product = ProductModel(**data)
             db.session.add(product)
-            db.session.commit()
+            db.session.flush()
             return product
         except Exception as ex:
             s3.delete_photo(file_name)

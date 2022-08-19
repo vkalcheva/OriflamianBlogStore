@@ -23,7 +23,7 @@ class PostManager:
             data["photo_url"] = photo_url
             post = PostModel(**data)
             db.session.add(post)
-            db.session.commit()
+            db.session.flush()
             return post
         except Exception as ex:
             s3.delete_photo(file_name)

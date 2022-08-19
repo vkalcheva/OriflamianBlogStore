@@ -10,7 +10,12 @@ class S3Service:
         self.secret = config("AWS_SECRET_KEY")
         self.region = config("S3_REGION")
         self.bucket = config("S3_BUCKET_NAME")
-        self.s3 = boto3.client("s3", region_name=self.region, aws_access_key_id=self.key, aws_secret_access_key=self.secret)
+        self.s3 = boto3.client(
+            "s3",
+            region_name=self.region,
+            aws_access_key_id=self.key,
+            aws_secret_access_key=self.secret,
+        )
 
     def upload_photo(self, path, key):
         try:
