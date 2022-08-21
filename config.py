@@ -39,7 +39,6 @@ class TestConfig:
 
 def create_app(config="config.DevelopmentConfig"):
     app = Flask(__name__)
-    db.init_app(app)
     app.config.from_object(config)
     api = Api(app)
     migrate = Migrate(app, db)

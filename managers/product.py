@@ -5,7 +5,7 @@ from werkzeug.exceptions import NotFound
 
 from constants import TEMP_DIR
 from db import db
-from models import ProductModel, CategoryType, CategoryModel
+from models import ProductModel
 from services.s3 import S3Service
 from utils.helpers import decode_file
 

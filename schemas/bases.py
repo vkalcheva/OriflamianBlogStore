@@ -1,7 +1,4 @@
 from marshmallow import Schema, fields
-from marshmallow_enum import EnumField
-
-from models import CategoryType
 
 
 class ProductBaseSchema(Schema):
@@ -11,7 +8,7 @@ class ProductBaseSchema(Schema):
 
 
 class CategoryBaseSchema(Schema):
-    type = EnumField(CategoryType)
+    type = fields.String(required=True)
 
 
 class PostBaseSchema(Schema):

@@ -4,11 +4,18 @@ from db import db
 app = create_app()
 
 
+@app.before_first_request
+def create_tables():
+    db.init_app(app)
+
+
+
 @app.after_request
-def return_resp(resp):
+def close_request(response):
     db.session.commit()
-    return resp
+    return response
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run()
+

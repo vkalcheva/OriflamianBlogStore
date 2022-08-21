@@ -12,12 +12,3 @@ class State(Enum):
     rejected = "Rejected"
 
 
-class CategoryType(Enum):
-    skin_care = "skin care"
-    makeup = "makeup"
-    fragrance = "fragrance"
-    body = "body"
-    hair = "hair"
-    accessory = "accessory"
-    wellness = "wellness"
-    other = "other"
