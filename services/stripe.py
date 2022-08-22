@@ -26,3 +26,16 @@ class StripeService:
         )
         card_token = card["id"]
         return card_token
+
+    # def generate_card_token(self):
+    #     data = stripe.Token.create(
+    #         card={
+    #             "number": "4242424242424242",
+    #             "exp_month": 9,
+    #             "exp_year": 2023,
+    #             "cvc": "123",
+    #         })
+    #     card_token = data['id']
+    #
+    #     return card_token
+

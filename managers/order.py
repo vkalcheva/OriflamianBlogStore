@@ -6,6 +6,9 @@ from werkzeug.exceptions import BadRequest
 from db import db
 
 from models import ProductModel, OrderModel, ProductsInOrder, State
+from services.stripe import StripeService
+
+stripe_service = StripeService()
 
 
 class OrderManager:
@@ -26,7 +29,7 @@ class OrderManager:
         order = OrderModel(products=products, blogger_id=user.id, status=State.approved)
 
         db.session.add(order)
-        db.session.commit()
+        db.session.flush()
         order.create_payment_charge(card_token)
 
         return order

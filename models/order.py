@@ -32,7 +32,7 @@ class OrderModel(db.Model):
     @property
     def description(self) -> str:
         """
-        Generates a simple string representing this order, in the format of "5x chair, 2x table"
+        Generates a simple string representing this order, in the format of "5x cream, 2x bag"
         """
         product_counts = [f"{product_data.quantity}x {product_data.product.name}" for product_data in self.products]
         return ",".join(product_counts)
@@ -46,18 +46,18 @@ class OrderModel(db.Model):
         """
         return int(sum([product_data.product.price * product_data.quantity for product_data in self.products]) * 100)
 
-    def generate_card_token(self):
-        data = stripe.Token.create(
-            card={
-                "number": "4242424242424242",
-                "exp_month": 9,
-                "exp_year": 2023,
-                "cvc": "123",
-            })
-        card_token = data['id']
-
-        return card_token
-
+    # def generate_card_token(self):
+    #     data = stripe.Token.create(
+    #         card={
+    #             "number": "4242424242424242",
+    #             "exp_month": 9,
+    #             "exp_year": 2023,
+    #             "cvc": "123",
+    #         })
+    #     card_token = data['id']
+    #
+    #     return card_token
+    #
     def create_payment_charge(self, card_token):
         payment = stripe.Charge.create(
             amount=self.amount,
@@ -67,6 +67,4 @@ class OrderModel(db.Model):
 
         )
 
-        payment_check = State.approved  # return True for successfull payment
-
-        return payment_check
+        return payment

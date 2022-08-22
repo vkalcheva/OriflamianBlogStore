@@ -4,7 +4,7 @@ from marshmallow import Schema, fields
 class ProductBaseSchema(Schema):
     name = fields.String(required=True)
     price = fields.Float(required=True)
-    category_id = fields.Integer(required=True)
+    category_id = fields.Integer()
 
 
 class CategoryBaseSchema(Schema):
