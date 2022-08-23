@@ -38,4 +38,3 @@ class StripeService:
     #     card_token = data['id']
     #
     #     return card_token
-

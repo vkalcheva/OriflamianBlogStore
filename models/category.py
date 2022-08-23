@@ -5,7 +5,7 @@ class CategoryModel(db.Model):
     __tablename__ = "categories"
 
     id = db.Column(db.Integer, primary_key=True)
-    type = db.Column(db.String, nullable=False)
+    type = db.Column(db.String(30), nullable=False)
 
     products = db.relationship("ProductModel", lazy="dynamic")
 

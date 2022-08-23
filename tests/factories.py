@@ -27,6 +27,7 @@ class BloggerFactory(BaseFactory):
     phone = str(randint(100000, 200000))
     role = UserRole.blogger
 
+
 class AdminFactory(BaseFactory):
     class Meta:
         model = AdminModel

@@ -33,7 +33,7 @@ class TestAuth(TestCase):
         bloggers = BloggerModel.query.all()
         assert len(bloggers) == 0
 
-        resp = self.client.post(url, data=json.dumps(data), headers={"Content-Type": "application/json"})
+        resp = self.client.post(url, json=data, headers={"Content-Type": "application/json"})
 
         assert resp.status_code == 201
         assert "token" in resp.json

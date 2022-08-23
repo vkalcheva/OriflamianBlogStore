@@ -1,8 +1,8 @@
-"""Initial migration.
+"""empty message
 
-Revision ID: c970fcdc2bd0
+Revision ID: b514a45592ee
 Revises: 
-Create Date: 2022-08-21 12:16:10.264471
+Create Date: 2022-08-23 06:59:55.084946
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'c970fcdc2bd0'
+revision = 'b514a45592ee'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -24,7 +24,7 @@ def upgrade():
     sa.Column('last_name', sa.String(length=20), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
     sa.Column('password', sa.String(length=255), nullable=False),
-    sa.Column('phone', sa.String(length=100), nullable=False),
+    sa.Column('phone', sa.String(length=13), nullable=False),
     sa.Column('role', sa.Enum('blogger', 'admin', name='userrole'), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
@@ -35,14 +35,14 @@ def upgrade():
     sa.Column('last_name', sa.String(length=20), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
     sa.Column('password', sa.String(length=255), nullable=False),
-    sa.Column('phone', sa.String(length=100), nullable=False),
+    sa.Column('phone', sa.String(length=13), nullable=False),
     sa.Column('role', sa.Enum('blogger', 'admin', name='userrole'), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
     op.create_table('categories',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('type', sa.String(), nullable=False),
+    sa.Column('type', sa.String(length=30), nullable=False),
     sa.Column('admin_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['admin_id'], ['admins.id'], ),
     sa.PrimaryKeyConstraint('id')

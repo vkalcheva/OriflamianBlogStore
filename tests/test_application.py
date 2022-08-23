@@ -91,3 +91,49 @@ class TestApp(TestCase):
                 resp = self.client.post(url, headers=headers)
             self.assert403(resp)
             self.assertEqual(resp.json, {"message": "Permission denied!"})
+
+    def test_register_schema_raises_invalid_first_name(self):
+        data = {
+            "last_name": "Test",
+            "email": "test@test.com",
+            "phone": "+359899111111",
+            "password": "P345@assd1",
+        }
+        headers = {"Content-Type": "application/json"}
+        url = "/register"
+
+        resp = self.client.post(url, headers=headers, json=data)
+        self.assert400(resp)
+        assert resp.json == {
+            "message": "Invalid fields {'first_name': ['Missing data for required "
+            "field.']}"
+        }
+
+        data["first_name"] = "A"
+        resp = self.client.post(url, headers=headers, json=data)
+        self.assert400(resp)
+        assert resp.json == {
+            "message": "Invalid fields {'first_name': ['Shorter than minimum length 3.']}"
+        }
+
+    def test_register_schema_raises_invalid_phone_format(self):
+        data = {
+            "first_name": "Test",
+            "last_name": "Testov",
+            "email": "test@test.com",
+            "phone": "359899111111",
+            "password": "P345@assd1",
+        }
+        headers = {"Content-Type": "application/json"}
+        url = "/register"
+
+        resp = self.client.post(url, headers=headers, json=data)
+        self.assert400(resp)
+        assert resp.json == {'message': "Invalid fields {'phone': ['Not valid number!']}"}
+
+        data["phone"] = "0896678909"
+
+        resp = self.client.post(url, headers=headers, json=data)
+        self.assert400(resp)
+        assert resp.json == {'message': "Invalid fields {'phone': ['Not valid number!']}"}
+

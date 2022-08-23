@@ -19,23 +19,24 @@ class OrderResource(Resource):
     @validate_schema(OrderSchemaRequest)
     def post(self):
         data = request.get_json()
-        card_token = stripe_service.create_card()
+        # card_token = stripe_service.create_card()
         current_user = auth.current_user()
-
-        new_order = OrderManager.create(data, current_user, card_token)
-
+        new_order = OrderManager.create(data, current_user)
         return OrderSchemaResponse().dump(new_order), 201
 
 
 class ApproveOrderResource(Resource):
     @auth.login_required
-    def put(self, id):
-        OrderManager.approve(id)
+    @permission_required(UserRole.admin)
+    def put(self, id_):
+        card_token = stripe_service.create_card()
+        OrderManager.approve(id_, card_token)
         return 204
 
 
 class RejectOrderResource(Resource):
     @auth.login_required
-    def put(self, id):
-        OrderManager.reject(id)
+    @permission_required(UserRole.admin)
+    def put(self, id_):
+        OrderManager.reject(id_)
         return 204

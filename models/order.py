@@ -34,7 +34,10 @@ class OrderModel(db.Model):
         """
         Generates a simple string representing this order, in the format of "5x cream, 2x bag"
         """
-        product_counts = [f"{product_data.quantity}x {product_data.product.name}" for product_data in self.products]
+        product_counts = [
+            f"{product_data.quantity}x {product_data.product.name}"
+            for product_data in self.products
+        ]
         return ",".join(product_counts)
 
     @property
@@ -44,7 +47,15 @@ class OrderModel(db.Model):
         Assumes item price is in USD–multi-currency becomes much tricker!
         :return int: total amount of cents to be charged in this order.x`
         """
-        return int(sum([product_data.product.price * product_data.quantity for product_data in self.products]) * 100)
+        return int(
+            sum(
+                [
+                    product_data.product.price * product_data.quantity
+                    for product_data in self.products
+                ]
+            )
+            * 100
+        )
 
     # def generate_card_token(self):
     #     data = stripe.Token.create(
@@ -61,10 +72,8 @@ class OrderModel(db.Model):
     def create_payment_charge(self, card_token):
         payment = stripe.Charge.create(
             amount=self.amount,
-            currency='usd',
+            currency="usd",
             description=self.description,
             source=card_token,
-
         )
-
         return payment
