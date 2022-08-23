@@ -2,6 +2,7 @@
 
 REST API Application
 
+Back-end restfull application for sharing an opinion about products.I started to create this application for present to my friend.The main idea is to helpe her in MLM buisnes. Bloggers have access only to the blog and can make posts and to write review other posts. The application has only super admin, he can creat products and chategories.Bloggers also can make orders.The application uses STRIPE payment service for charging.Only after admin approve teh order, Stripe charge the user. The project can be extended with additional functionality, like adding other users /partners/,who will use an additional discount on the price of the products and they can create a team.
 
 
 
