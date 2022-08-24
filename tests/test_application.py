@@ -129,11 +129,14 @@ class TestApp(TestCase):
 
         resp = self.client.post(url, headers=headers, json=data)
         self.assert400(resp)
-        assert resp.json == {'message': "Invalid fields {'phone': ['Not valid number!']}"}
+        assert resp.json == {
+            "message": "Invalid fields {'phone': ['Not valid number!']}"
+        }
 
         data["phone"] = "0896678909"
 
         resp = self.client.post(url, headers=headers, json=data)
         self.assert400(resp)
-        assert resp.json == {'message': "Invalid fields {'phone': ['Not valid number!']}"}
-
+        assert resp.json == {
+            "message": "Invalid fields {'phone': ['Not valid number!']}"
+        }

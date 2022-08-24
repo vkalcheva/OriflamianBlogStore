@@ -1,5 +1,5 @@
-from resources.auth_blogger import RegisterBloggerResource, LoginBloggerResource
 from resources.auth_admin import RegisterAdminResource, LoginAdminResource
+from resources.auth_blogger import RegisterBloggerResource, LoginBloggerResource
 from resources.category import CategoryResource
 from resources.order import OrderResource, ApproveOrderResource, RejectOrderResource
 from resources.post import PostResource

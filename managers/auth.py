@@ -4,7 +4,7 @@ import jwt
 from decouple import config
 from flask_httpauth import HTTPTokenAuth
 from jwt import ExpiredSignatureError, InvalidTokenError
-from werkzeug.exceptions import BadRequest, Unauthorized
+from werkzeug.exceptions import Unauthorized
 
 from models import AdminModel, BloggerModel
 
@@ -29,9 +29,7 @@ class AuthManager:
         if not token:
             raise Unauthorized("Missing token")
         try:
-            data = jwt.decode(
-                jwt=token, key=config("SECRET_KEY"), algorithms=["HS256"]
-            )
+            data = jwt.decode(jwt=token, key=config("SECRET_KEY"), algorithms=["HS256"])
             return data["sub"], data["role"]
         except ExpiredSignatureError:
             raise Unauthorized("Token expired")

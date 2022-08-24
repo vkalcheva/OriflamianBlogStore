@@ -1,8 +1,6 @@
 import os.path
 import uuid
 
-from werkzeug.exceptions import NotFound
-
 from constants import TEMP_DIR
 from db import db
 from models import ProductModel
@@ -36,5 +34,3 @@ class ProductManager:
             raise ex
         finally:
             os.remove(path)
-
-

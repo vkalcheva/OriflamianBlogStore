@@ -10,5 +10,3 @@ class State(Enum):
     pending = "Pending"
     approved = "Approved"
     rejected = "Rejected"
-
-

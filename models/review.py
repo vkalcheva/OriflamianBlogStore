@@ -16,4 +16,3 @@ class ReviewModel(db.Model):
 
     post_id = db.Column(db.Integer, db.ForeignKey("posts.id"))
     post = db.relationship("PostModel")
-

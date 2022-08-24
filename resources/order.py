@@ -1,13 +1,12 @@
 from flask import request
 from flask_restful import Resource
 
-from services.stripe import StripeService
-
 from managers.auth import auth
 from managers.order import OrderManager
 from models import UserRole
 from schemas.requests.order import OrderSchemaRequest
 from schemas.responses.order import OrderSchemaResponse
+from services.stripe import StripeService
 from utils.decorators import validate_schema, permission_required
 
 stripe_service = StripeService()

@@ -18,4 +18,3 @@ class CategoryResource(Resource):
         current_user = auth.current_user()
         new_category = CategoryManager.create(data, current_user)
         return CategoryResponseSchema().dump(new_category), 201
-

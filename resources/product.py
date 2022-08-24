@@ -10,7 +10,6 @@ from utils.decorators import permission_required, validate_schema
 
 
 class ProductResource(Resource):
-    #test with blogger token
     @auth.login_required
     @permission_required(UserRole.admin)
     def get(self):
@@ -25,6 +24,3 @@ class ProductResource(Resource):
         current_user = auth.current_user()
         new_product = ProductManager.create(data, current_user)
         return ProductResponseSchema().dump(new_product), 201
-
-
-

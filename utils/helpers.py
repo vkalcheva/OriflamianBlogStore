@@ -9,4 +9,3 @@ def decode_file(path, encoded_file):
             f.write(base64.b64decode(encoded_file.encode("utf-8")))
     except Exception:
         raise BadRequest("Invalid photo")
-

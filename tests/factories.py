@@ -39,5 +39,3 @@ class AdminFactory(BaseFactory):
     password = factory.Faker("password")
     phone = str(randint(100000, 200000))
     role = UserRole.admin
-
-

@@ -1,6 +1,7 @@
 import phonenumbers
 from marshmallow import fields, validates, ValidationError, validate
 from phonenumbers.phonenumberutil import NumberParseException
+
 from schemas.requests.auth_base import AuthBase
 
 
@@ -15,9 +16,8 @@ class RegisterAdminRequestSchema(AuthBase):
             phone_number = phonenumbers.parse(phone, None)
             phonenumbers.is_valid_number(phone_number)
         except NumberParseException:
-            raise ValidationError('Not valid number!')
+            raise ValidationError("Not valid number!")
 
 
 class LoginAdminRequestSchema(AuthBase):
     pass
-

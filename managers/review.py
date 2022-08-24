@@ -49,5 +49,3 @@ class ReviewManager:
 
         db.session.delete(review)
         db.session.flush()
-
-

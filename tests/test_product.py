@@ -53,7 +53,9 @@ class TestProduct(TestCase):
         resp = self.client.post(self.url, headers=headers, json=data)
         self.assert400(resp)
 
-        assert resp.json == {'message': "Invalid fields {'name': ['Missing data for required field.']}"}
+        assert resp.json == {
+            "message": "Invalid fields {'name': ['Missing data for required field.']}"
+        }
 
         products = ProductModel.query.all()
         assert len(products) == 0
